@@ -6,7 +6,7 @@
 #    By: mle-duc <mle-duc@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/24 16:55:24 by mle-duc           #+#    #+#              #
-#    Updated: 2024/02/17 00:26:38 by mle-duc          ###   ########.fr        #
+#    Updated: 2024/02/27 15:21:37 by mle-duc          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,12 @@ INC_DIR =		./inc
 LIBFT_DIR =		./libft
 
 SRCS =			$(addprefix src/, \
+				render.c \
+				event.c \
+				img_pix_put.c \
+				init_data.c \
+				raycast.c \
+				textures.c \
 				main.c)
 
 OBJS =			${SRCS:.c=.o}

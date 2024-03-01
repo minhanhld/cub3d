@@ -6,7 +6,7 @@
 /*   By: mle-duc <mle-duc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 17:12:25 by mle-duc           #+#    #+#             */
-/*   Updated: 2024/02/17 00:55:54 by mle-duc          ###   ########.fr       */
+/*   Updated: 2024/02/28 22:33:30 by mle-duc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 # include <sys/stat.h>
 # include <stdio.h>
 
-# define WINDOW_WIDTH 1920
-# define WINDOW_HEIGHT 1080
+# define WINDOW_WIDTH 640
+# define WINDOW_HEIGHT 480
 
 typedef struct s_map
 {
@@ -51,6 +51,15 @@ typedef struct s_data
 	void	*win_ptr;
 	t_img	img;
 	t_map	*map;
+	double	moveSpeed;
+	double	rotSpeed;
+	double	posX;
+	double	posY;
+	double	dirX;
+	double	dirY;
+	double	planeX;
+	double	planeY;
+	t_img	textures[8];
 }	t_data;
 
 typedef struct s_rect
@@ -68,4 +77,11 @@ typedef struct s_point
 	double	y;
 }	t_point;
 
+int	handle_input(int keysym, t_data *data);
+int	cross(t_data *data);
+int	render(t_data *d);
+void	img_pix_put(t_img *img, int x, int y, int color);
+t_data	*initialize(int x, int y);
+void	raycast(t_img *img, t_data *data);
+int	load_textures(t_data *data);
 #endif
