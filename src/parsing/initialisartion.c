@@ -31,7 +31,7 @@ char	**init_config(void)
 
 int	init_map(char *dest, t_parsing *p)
 {
-	int	i;
+	size_t	i;
 	int	k;
 	int	index;
 
@@ -40,7 +40,7 @@ int	init_map(char *dest, t_parsing *p)
 	p->map = malloc(sizeof(char *) * (ft_line_count(dest) + 2));
 	if (!p->map)
 		return (-1);
-	while (i < (int)ft_strlen(dest))
+	while (i < ft_strlen(dest))
 	{
 		k = i;
 		i = ft_endlinelen(dest, i);

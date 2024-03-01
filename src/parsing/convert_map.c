@@ -5,6 +5,7 @@ void   get_player_all(t_parsing *p, t_map *m)
     int i;
     int y;
 
+    i = 0;
     while (m->_map[i] != 0)
     {
         y = 0;

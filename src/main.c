@@ -31,7 +31,6 @@ char	*file_cpy(char *dest, char *str)
 	tmp = ft_strjoin(dest, str);
 	if (!tmp)
 		return (NULL);
-	free(dest);
 	return (tmp);
 }
 
@@ -53,9 +52,15 @@ int	parsing(t_parsing *p, int fd)
 	if (!dest)
 		return (-1);
 	if (get_config(p, dest) == -1)
+	{
+		printf("oui2w");
 		return (-1);
+	}
 	if (parsing_map(p) == -1)
+	{
+		printf("oui");
 		return (-1);
+	}
 	return (1);
 }
 
@@ -79,9 +84,10 @@ int	main(int ac, char **argv)
 	}
 	if (parsing(p, fd) == -1)
 	{
-		cub3d(p);
 		free_structs(p);
 		printf("%sError in parsing%s\n", RED, RESET);
 		return (-1);
 	}
+	cub3d(p); 
+	free_structs(p);
 }
