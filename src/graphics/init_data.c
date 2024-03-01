@@ -6,11 +6,12 @@
 /*   By: mle-duc <mle-duc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 14:15:42 by mle-duc           #+#    #+#             */
-/*   Updated: 2024/03/01 14:49:52 by mle-duc          ###   ########.fr       */
+/*   Updated: 2024/03/01 15:10:47 by mle-duc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
 static void	set_north_south(t_data *data, t_parsing *p)
 {
 	data->dirY = 0;
@@ -42,6 +43,7 @@ static void	set_west_east(t_data *data, t_parsing *p)
 		data->planeX = 0.66;
 	}
 }
+
 static void	set_direction(t_data *data, t_parsing *p)
 {
 	if (p->_playerD == 'N' || p->_playerD == 'S')
@@ -74,7 +76,8 @@ t_data	*initialize(int x, int y, t_parsing *p)
 		free(data);
 		return (NULL);
 	}
-	data->win_ptr = mlx_new_window(data->mlx_ptr, x, y, "cub3d - educlos,mleduc");
+	data->win_ptr = mlx_new_window(data->mlx_ptr, x, y, \
+	"cub3d - educlos,mleduc");
 	if (!(data->win_ptr))
 	{
 		free(data->mlx_ptr);

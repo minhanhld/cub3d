@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mle-duc <mle-duc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 16:51:54 by mle-duc           #+#    #+#             */
-/*   Updated: 2024/03/01 11:05:52 by mle-duc          ###   ########.fr       */
+/*   Updated: 2024/03/01 15:11:57 by mle-duc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	hooks(t_data *data)
 {
 	mlx_loop_hook(data->mlx_ptr, &render, data);
 	mlx_hook(data->win_ptr, KeyPress, KeyPressMask, &handle_input, data);
-	//mlx_hook(data->win_ptr, DestroyNotify, StructureNotifyMask, &cross, data);
 	mlx_hook(data->win_ptr, 17, 1L << 0, &cross, data);
 	mlx_loop(data->mlx_ptr);
 }
