@@ -6,7 +6,7 @@
 /*   By: mle-duc <mle-duc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 17:29:02 by mle-duc           #+#    #+#             */
-/*   Updated: 2024/02/29 00:21:45 by mle-duc          ###   ########.fr       */
+/*   Updated: 2024/03/01 12:55:01 by mle-duc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,16 +67,16 @@ int	handle_input(int keysym, t_data *data)
 	}
 	else if (keysym == XK_Up)
 	{
-		if(WorldMap[(int)(data->posX + data->dirX * data->moveSpeed)][(int)(data->posY)] == 0)
+		if(data->map[(int)(data->posX + data->dirX * data->moveSpeed)][(int)(data->posY)] == 0)
 			data->posX += data->dirX * data->moveSpeed;
-		if(WorldMap[(int)data->posX][(int)(data->posY + data->dirY * data->moveSpeed)] == 0)
+		if(data->map[(int)data->posX][(int)(data->posY + data->dirY * data->moveSpeed)] == 0)
 			data->posY += data->dirY * data->moveSpeed;
 	}
 	else if (keysym == XK_Down)
 	{
-		if(WorldMap[(int)(data->posX + data->dirX * data->moveSpeed)][(int)(data->posY)] == 0)
+		if(data->map[(int)(data->posX + data->dirX * data->moveSpeed)][(int)(data->posY)] == 0)
 			data->posX -= data->dirX * data->moveSpeed;
-		if(WorldMap[(int)data->posX][(int)(data->posY + data->dirY * data->moveSpeed)] == 0)
+		if(data->map[(int)data->posX][(int)(data->posY + data->dirY * data->moveSpeed)] == 0)
 			data->posY -= data->dirY * data->moveSpeed;
 	}
 	return (0);

@@ -18,7 +18,7 @@ void   get_player_all(t_parsing *p, t_map *m)
                 p->_playerY = i;
                 m->_map[i][y] = '0';
             }
-            y++;        
+            y++;
         }
         i++;
     }
@@ -31,7 +31,7 @@ void    convert_map_int(t_parsing *p, t_map *m)
     int y;
 
     y = 0;
-    p->_map = malloc(sizeof(int *) * m->_last - m->_first + 1);
+    p->_map = malloc(sizeof(int *) * (m->_last - m->_first + 1));
     if (!p->_map)
         return ;
     while (m->_map[y] != 0)

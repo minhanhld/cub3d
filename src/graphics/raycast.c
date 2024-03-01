@@ -6,7 +6,7 @@
 /*   By: mle-duc <mle-duc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 16:07:59 by mle-duc           #+#    #+#             */
-/*   Updated: 2024/02/29 00:21:25 by mle-duc          ###   ########.fr       */
+/*   Updated: 2024/03/01 13:33:09 by mle-duc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,7 +150,7 @@ void	raycast(t_img *img, t_data *data)
 				mapY += stepY;
 				side = 1;
 			}
-			if (worldMap[mapX][mapY] > 0)
+			if ((data->map)[mapX][mapY] > 0)
 				hit = 1;
 		}
 		if (side == 0)
@@ -166,7 +166,7 @@ void	raycast(t_img *img, t_data *data)
 		if (drawEnd >= WINDOW_HEIGHT)
 			drawEnd = WINDOW_HEIGHT - 1;
 
-		int	texNum = worldMap[mapX][mapY] - 1;
+		int	texNum = data->map[mapX][mapY] - 1;
 
 		double	wallX;
 		if (side == 0)

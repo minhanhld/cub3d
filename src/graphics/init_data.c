@@ -6,11 +6,60 @@
 /*   By: mle-duc <mle-duc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 14:15:42 by mle-duc           #+#    #+#             */
-/*   Updated: 2024/03/01 11:10:25 by mle-duc          ###   ########.fr       */
+/*   Updated: 2024/03/01 14:49:52 by mle-duc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+static void	set_north_south(t_data *data, t_parsing *p)
+{
+	data->dirY = 0;
+	data->planeX = 0;
+	if (p->_playerD == 'N')
+	{
+		data->dirX = -1;
+		data->planeY = 0.66;
+	}
+	else
+	{
+		data->dirX = 1;
+		data->planeY = -0.66;
+	}
+}
+
+static void	set_west_east(t_data *data, t_parsing *p)
+{
+	data->dirX = 0;
+	data->planeY = 0;
+	if (p->_playerD == 'W')
+	{
+		data->dirY = -1;
+		data->planeX = -0.66;
+	}
+	else
+	{
+		data->dirY = 1;
+		data->planeX = 0.66;
+	}
+}
+static void	set_direction(t_data *data, t_parsing *p)
+{
+	if (p->_playerD == 'N' || p->_playerD == 'S')
+		set_north_south(data, p);
+	else if (p->_playerD == 'W' || p->_playerD == 'E')
+		set_west_east(data, p);
+}
+
+static void	set_values(t_data *data, t_parsing *p)
+{
+	load_textures(data);
+	data->moveSpeed = 0.017 * 5.0;
+	data->rotSpeed = 0.017 * 3.0;
+	data->posX = p->_playerY;
+	data->posY = p->_playerX;
+	set_direction(data, p);
+	data->map = p->_map;
+}
 
 t_data	*initialize(int x, int y, t_parsing *p)
 {
@@ -32,19 +81,6 @@ t_data	*initialize(int x, int y, t_parsing *p)
 		free(data);
 		return (NULL);
 	}
-	/*data->textures = malloc(sizeof(t_img) * 8);
-	if (!data->textures)
-		return (NULL);
-	*/
-	load_textures(data);
-	data->moveSpeed = 0.017 * 5.0;
-	data->rotSpeed = 0.017 * 3.0;
-	data->posX = 22;
-	data->posY = 12;
-	data->dirX = -1;
-	data->dirY = 0;
-	data->planeX = 0;
-	data->planeY = 0.66;
-	data->map = p->_map;
+	set_values(data, p);
 	return (data);
 }
