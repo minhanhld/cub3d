@@ -6,7 +6,7 @@
 #    By: mle-duc <mle-duc@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/24 16:55:24 by mle-duc           #+#    #+#              #
-#    Updated: 2024/02/27 15:21:37 by mle-duc          ###   ########.fr        #
+#    Updated: 2024/03/01 11:07:50 by mle-duc          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,12 +21,30 @@ INC_DIR =		./inc
 LIBFT_DIR =		./libft
 
 SRCS =			$(addprefix src/, \
+				$(addprefix graphics/, \
 				render.c \
 				event.c \
 				img_pix_put.c \
 				init_data.c \
 				raycast.c \
 				textures.c \
+				cub3d.c) \
+				$(addprefix parsing/, \
+				check_path.c \
+				convert_map.c \
+				free.c \
+				initialisartion.c \
+				map_checker.c \
+				parsing_map.c \
+				parsing.c \
+				position.c \
+				utils_line.c \
+				utils_list.c \
+				utils_print.c \
+				utils.c \
+				utils2.c \
+				utils3.c \
+				wall_checker.c) \
 				main.c)
 
 OBJS =			${SRCS:.c=.o}

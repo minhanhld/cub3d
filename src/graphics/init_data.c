@@ -6,13 +6,13 @@
 /*   By: mle-duc <mle-duc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 14:15:42 by mle-duc           #+#    #+#             */
-/*   Updated: 2024/02/27 16:24:53 by mle-duc          ###   ########.fr       */
+/*   Updated: 2024/03/01 11:10:25 by mle-duc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-t_data	*initialize(int x, int y)
+t_data	*initialize(int x, int y, t_parsing *p)
 {
 	t_data	*data;
 
@@ -45,5 +45,6 @@ t_data	*initialize(int x, int y)
 	data->dirY = 0;
 	data->planeX = 0;
 	data->planeY = 0.66;
+	data->map = p->_map;
 	return (data);
 }

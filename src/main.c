@@ -5,59 +5,83 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mle-duc <mle-duc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/24 16:51:54 by mle-duc           #+#    #+#             */
-/*   Updated: 2024/02/27 16:26:34 by mle-duc          ###   ########.fr       */
+/*   Created: 2024/02/12 13:19:44 by educlos           #+#    #+#             */
+/*   Updated: 2024/03/01 11:12:56 by mle-duc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "parsing.h"
 #include "cub3d.h"
 
-void	destroy_textures(t_data *data)
+int	init_pstruct(t_parsing *p)
 {
-	int	i;
+	p->lcount = 0;
+	p->map = NULL;
+	p->pos = NULL;
+	p->_map = NULL;
+	return (1);
+}
 
-	i = -1;
-	while (++i < 7)
+char	*file_cpy(char *dest, char *str)
+{
+	char	*tmp;
+
+	if (!dest)
+		return (dest = strdup(str));
+	tmp = ft_strjoin(dest, str);
+	if (!tmp)
+		return (NULL);
+	free(dest);
+	return (tmp);
+}
+
+int	parsing(t_parsing *p, int fd)
+{
+	char	*str;
+	char	*dest;
+
+	dest = NULL;
+	while (-1)
 	{
-		mlx_destroy_image(data->mlx_ptr, data->textures[i].mlx_img);
+		p->lcount++;
+		str = get_next_line(fd);
+		if (!str)
+			break ;
+		dest = file_cpy(dest, str);
+		free(str);
 	}
-}
-void	hooks(t_data *data)
-{
-	mlx_loop_hook(data->mlx_ptr, &render, data);
-	mlx_hook(data->win_ptr, KeyPress, KeyPressMask, &handle_input, data);
-	//mlx_hook(data->win_ptr, DestroyNotify, StructureNotifyMask, &cross, data);
-	mlx_hook(data->win_ptr, 17, 1L << 0, &cross, data);
-	mlx_loop(data->mlx_ptr);
-}
-
-void	clear(t_data *data)
-{
-	mlx_destroy_image(data->mlx_ptr, data->img.mlx_img);
-	destroy_textures(data);
-	mlx_destroy_display(data->mlx_ptr);
-	free(data->mlx_ptr);
-	free(data);
+	if (!dest)
+		return (-1);
+	if (get_config(p, dest) == -1)
+		return (-1);
+	if (parsing_map(p) == -1)
+		return (-1);
+	return (1);
 }
 
-void	fdf(void)
+int	main(int ac, char **argv)
 {
-	t_data	*data;
-	t_img	img;
+	int			fd;
+	t_parsing	*p;
 
-
-	data = initialize(WINDOW_WIDTH, WINDOW_HEIGHT);
-	img.mlx_img = mlx_new_image(data->mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT);
-	img.addr = mlx_get_data_addr(img.mlx_img, &img.bpp, &img.l, &img.endian);
-	data->img = img;
-	hooks(data);
-	clear(data);
-}
-
-int	main(int argc, char *argv[])
-{
-	(void)argc;
-	(void)argv;
-
-	fdf();
+	p = malloc(sizeof(t_parsing));
+	if (!p)
+		return (-1);
+	init_pstruct(p);
+	if (ac != 2)
+		return (-1);
+	fd = open(argv[1], O_RDONLY);
+	if (fd == -1 || ft_check_format(argv[1], ".cub") == -1)
+	{
+		free_structs(p);
+		printf("%sError file%s\n", RED, RESET);
+		return (-1);
+	}
+	if (parsing(p, fd) == -1)
+	{
+		cub3d(p);
+		free_structs(p);
+		printf("%sError in parsing%s\n", RED, RESET);
+		return (-1);
+	}
 }

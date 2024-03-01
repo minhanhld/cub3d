@@ -6,7 +6,7 @@
 /*   By: mle-duc <mle-duc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 17:12:25 by mle-duc           #+#    #+#             */
-/*   Updated: 2024/02/28 22:33:30 by mle-duc          ###   ########.fr       */
+/*   Updated: 2024/03/01 11:11:19 by mle-duc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,10 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <stdio.h>
+# include "parsing.h"
 
 # define WINDOW_WIDTH 640
 # define WINDOW_HEIGHT 480
-
-typedef struct s_map
-{
-	int		width;
-	int		height;
-	int		**grid;
-	double	yo;
-	double	xo;
-	double	line_length;
-}	t_map;
 
 typedef struct s_img
 {
@@ -50,7 +41,6 @@ typedef struct s_data
 	void	*mlx_ptr;
 	void	*win_ptr;
 	t_img	img;
-	t_map	*map;
 	double	moveSpeed;
 	double	rotSpeed;
 	double	posX;
@@ -60,6 +50,7 @@ typedef struct s_data
 	double	planeX;
 	double	planeY;
 	t_img	textures[8];
+	int		**map;
 }	t_data;
 
 typedef struct s_rect
@@ -81,7 +72,8 @@ int	handle_input(int keysym, t_data *data);
 int	cross(t_data *data);
 int	render(t_data *d);
 void	img_pix_put(t_img *img, int x, int y, int color);
-t_data	*initialize(int x, int y);
+t_data	*initialize(int x, int y, t_parsing *p);
 void	raycast(t_img *img, t_data *data);
 int	load_textures(t_data *data);
+void	cub3d(t_parsing *p);
 #endif
