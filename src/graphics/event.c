@@ -6,7 +6,7 @@
 /*   By: mle-duc <mle-duc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 17:29:02 by mle-duc           #+#    #+#             */
-/*   Updated: 2024/03/01 15:22:53 by mle-duc          ###   ########.fr       */
+/*   Updated: 2024/03/02 02:07:58 by mle-duc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ int	handle_input(int keysym, t_data *data)
 
 int	cross(t_data *data)
 {
+	destroy_textures(data);
 	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
 	data->win_ptr = NULL;
 	mlx_destroy_image(data->mlx_ptr, data->img.mlx_img);

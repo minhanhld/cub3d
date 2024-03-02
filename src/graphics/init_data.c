@@ -6,7 +6,7 @@
 /*   By: mle-duc <mle-duc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 14:15:42 by mle-duc           #+#    #+#             */
-/*   Updated: 2024/03/01 15:10:47 by mle-duc          ###   ########.fr       */
+/*   Updated: 2024/03/02 05:06:57 by mle-duc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,42 @@ static void	set_direction(t_data *data, t_parsing *p)
 		set_west_east(data, p);
 }
 
+static void	set_floor_colors(t_data *data, t_parsing *p)
+{
+	t_pos	*tmp;
+	int		color;
+
+	tmp = p->pos;
+	while (tmp != NULL)
+	{
+		if (*(tmp->value) == 'F')
+		{
+				color = 65536 * tmp->range[0] + 256 \
+				* tmp->range[1] + tmp->range[2];
+				data->floor_color = color;
+		}
+		tmp = tmp->next;
+	}
+}
+
+static void	set_ceiling_colors(t_data *data, t_parsing *p)
+{
+	t_pos	*tmp;
+	int		color;
+
+	tmp = p->pos;
+	while (tmp != NULL)
+	{
+		if (*(tmp->value) == 'C')
+		{
+				color = 65536 * tmp->range[0] + 256 \
+				* tmp->range[1] + tmp->range[2];
+				data->ceiling_color = color;
+		}
+		tmp = tmp->next;
+	}
+}
+
 static void	set_values(t_data *data, t_parsing *p)
 {
 	load_textures(data);
@@ -60,6 +96,8 @@ static void	set_values(t_data *data, t_parsing *p)
 	data->posX = p->_playerY;
 	data->posY = p->_playerX;
 	set_direction(data, p);
+	set_floor_colors(data, p);
+	set_ceiling_colors(data, p);
 	data->map = p->_map;
 }
 

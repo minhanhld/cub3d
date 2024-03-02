@@ -6,40 +6,11 @@
 /*   By: mle-duc <mle-duc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 16:07:59 by mle-duc           #+#    #+#             */
-/*   Updated: 2024/03/01 13:33:09 by mle-duc          ###   ########.fr       */
+/*   Updated: 2024/03/02 05:08:00 by mle-duc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-
-int worldMap[24][24]=
-{
-  {0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-  {0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,2,2,2,2,2,0,0,0,0,3,0,3,0,3,0,0,0,1},
-  {1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,3,0,0,0,3,0,0,0,1},
-  {1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,2,2,2,2,2,0,0,0,0,3,0,3,0,3,0,0,0,1},
-  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,4,0,4,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,4,0,0,0,0,5,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,4,0,4,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,4,0,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
-};
 
 void	raycast(t_img *img, t_data *data)
 {
@@ -60,41 +31,11 @@ void	raycast(t_img *img, t_data *data)
 	int		a = -1;
 	while (++a < WINDOW_HEIGHT)
 	{
-		float	rayDirX0 = data->dirX - data->planeX;
-		float	rayDirY0 = data->dirY - data->planeY;
-		float	rayDirX1 = data->dirX + data->planeX;
-		float	rayDirY1 = data->dirY + data->planeY;
-
-		int p = a - WINDOW_HEIGHT / 2;
-
-		float	posZ = 0.5 * WINDOW_HEIGHT;
-
-		float	rowDistance = posZ / p;
-
-		float	floorStepX = rowDistance * (rayDirX1 - rayDirX0) / WINDOW_WIDTH;
-		float	floorStepY = rowDistance * (rayDirY1 - rayDirY0) / WINDOW_WIDTH;
-
-		float	floorX = data->posX + rowDistance * rayDirX0;
-		float	floorY = data->posY + rowDistance * rayDirY0;
 		int	tempX = -1;
 		while (++tempX < WINDOW_WIDTH)
 		{
-			int	cellX = (int)floorX;
-			int	cellY = (int)floorY;
-
-			int	tx = (int)(64 * (floorX - cellX)) & (64 -1);
-			int	ty = (int)(64 * (floorY - cellY)) & (64 -1);
-
-			floorX += floorStepX;
-			floorY += floorStepY;
-
-			int	floorTexture = 1;
-			int	ceilingTexture = 2;
-			int	color;
-			color = *(int *)(data->textures[floorTexture].addr + (ty * data->textures[floorTexture].l + tx * (data->textures[floorTexture].bpp/8)));
-			img_pix_put(img, tempX, a, color);
-			color = *(int *)(data->textures[ceilingTexture].addr + (ty * data->textures[ceilingTexture].l + tx * (data->textures[ceilingTexture].bpp/8)));
-			img_pix_put(img, tempX, WINDOW_HEIGHT - a - 1, color);
+			img_pix_put(img, tempX, a, data->floor_color);
+			img_pix_put(img, tempX, WINDOW_HEIGHT - a - 1, data->ceiling_color);
 		}
 	}
 	//

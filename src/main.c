@@ -6,7 +6,7 @@
 /*   By: mle-duc <mle-duc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 13:19:44 by educlos           #+#    #+#             */
-/*   Updated: 2024/03/01 14:50:30 by mle-duc          ###   ########.fr       */
+/*   Updated: 2024/03/02 02:27:40 by mle-duc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,15 +52,9 @@ int	parsing(t_parsing *p, int fd)
 	if (!dest)
 		return (-1);
 	if (get_config(p, dest) == -1)
-	{
-		printf("oui2w");
 		return (-1);
-	}
 	if (parsing_map(p) == -1)
-	{
-		printf("oui");
 		return (-1);
-	}
 	return (1);
 }
 
@@ -88,6 +82,7 @@ int	main(int ac, char **argv)
 		printf("%sError in parsing%s\n", RED, RESET);
 		return (-1);
 	}
+	//printf("value : %d\n", ((p->pos)->range)[0]);
 	cub3d(p);
 	free_structs(p);
 }

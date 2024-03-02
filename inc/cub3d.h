@@ -6,7 +6,7 @@
 /*   By: mle-duc <mle-duc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 17:12:25 by mle-duc           #+#    #+#             */
-/*   Updated: 2024/03/01 11:11:19 by mle-duc          ###   ########.fr       */
+/*   Updated: 2024/03/02 05:04:09 by mle-duc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ typedef struct s_data
 	double	dirY;
 	double	planeX;
 	double	planeY;
+	int		floor_color;
+	int		ceiling_color;
 	t_img	textures[8];
 	int		**map;
 }	t_data;
@@ -76,4 +78,5 @@ t_data	*initialize(int x, int y, t_parsing *p);
 void	raycast(t_img *img, t_data *data);
 int	load_textures(t_data *data);
 void	cub3d(t_parsing *p);
+void	destroy_textures(t_data *data);
 #endif

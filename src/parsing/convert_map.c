@@ -51,6 +51,7 @@ void    convert_map_int(t_parsing *p, t_map *m)
         printf("\n");
         y++;
     }
+    p->_map[y] = 0;
 }
 
 void struct_parsing(t_parsing *p, t_map *m)
