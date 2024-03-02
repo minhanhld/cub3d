@@ -6,7 +6,7 @@
 /*   By: mle-duc <mle-duc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 14:15:42 by mle-duc           #+#    #+#             */
-/*   Updated: 2024/03/02 05:06:57 by mle-duc          ###   ########.fr       */
+/*   Updated: 2024/03/02 21:26:55 by mle-duc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,9 +88,22 @@ static void	set_ceiling_colors(t_data *data, t_parsing *p)
 	}
 }
 
+void	init_text_img(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	while (i < 4)
+	{
+		data->textures[i].mlx_img = NULL;
+		i++;
+	}
+}
+
 static void	set_values(t_data *data, t_parsing *p)
 {
-	load_textures(data);
+	init_text_img(data);
+	load_textures(data, p);
 	data->moveSpeed = 0.017 * 5.0;
 	data->rotSpeed = 0.017 * 3.0;
 	data->posX = p->_playerY;
@@ -99,6 +112,7 @@ static void	set_values(t_data *data, t_parsing *p)
 	set_floor_colors(data, p);
 	set_ceiling_colors(data, p);
 	data->map = p->_map;
+	data->parsing = p;
 }
 
 t_data	*initialize(int x, int y, t_parsing *p)

@@ -6,7 +6,7 @@
 /*   By: mle-duc <mle-duc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 16:51:54 by mle-duc           #+#    #+#             */
-/*   Updated: 2024/03/01 15:11:57 by mle-duc          ###   ########.fr       */
+/*   Updated: 2024/03/02 14:47:06 by mle-duc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	destroy_textures(t_data *data)
 	int	i;
 
 	i = -1;
-	while (++i < 7)
+	while (++i < 4)
 	{
 		mlx_destroy_image(data->mlx_ptr, data->textures[i].mlx_img);
 	}
@@ -31,7 +31,7 @@ void	hooks(t_data *data)
 	mlx_loop(data->mlx_ptr);
 }
 
-void	clear(t_data *data)
+static void	clear(t_data *data)
 {
 	mlx_destroy_image(data->mlx_ptr, data->img.mlx_img);
 	destroy_textures(data);

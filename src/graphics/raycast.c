@@ -6,7 +6,7 @@
 /*   By: mle-duc <mle-duc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 16:07:59 by mle-duc           #+#    #+#             */
-/*   Updated: 2024/03/02 05:08:00 by mle-duc          ###   ########.fr       */
+/*   Updated: 2024/03/02 21:21:37 by mle-duc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ void	raycast(t_img *img, t_data *data)
 		if (drawEnd >= WINDOW_HEIGHT)
 			drawEnd = WINDOW_HEIGHT - 1;
 
-		int	texNum = data->map[mapX][mapY] - 1;
+		int	texNum = data->map[mapX][mapY];
 
 		double	wallX;
 		if (side == 0)
@@ -131,8 +131,27 @@ void	raycast(t_img *img, t_data *data)
 			int	texY = (int)texPos & (64 -1);
 			texPos += step;
 			//color = texture[texNum][64 * texY + texX];
-			color = *(int *)(data->textures[texNum].addr + (texY * data->textures[texNum].l + texX * (data->textures[texNum].bpp/8)));
-			img_pix_put(img, x, j, color);
+			if (side == 1 && rayDirY < 0)
+			{
+				color = *(int *)(data->textures[3].addr + (texY * data->textures[3].l + texX * (data->textures[3].bpp/8)));
+				img_pix_put(img, x, j, color);
+
+			}
+			else if (side == 1 && rayDirY > 0)
+			{
+				color = *(int *)(data->textures[2].addr + (texY * data->textures[2].l + texX * (data->textures[2].bpp/8)));
+				img_pix_put(img, x, j, color);
+			}
+			else if (side == 0 && rayDirX < 0)
+			{
+				color = *(int *)(data->textures[0].addr + (texY * data->textures[0].l + texX * (data->textures[0].bpp/8)));
+				img_pix_put(img, x, j, color);
+			}
+			else if (side == 0 && rayDirX > 0)
+			{
+				color = *(int *)(data->textures[1].addr + (texY * data->textures[1].l + texX * (data->textures[1].bpp/8)));
+				img_pix_put(img, x, j, color);
+			}
 			j++;
 		}
 		x++;
