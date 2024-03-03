@@ -6,7 +6,7 @@
 #    By: mle-duc <mle-duc@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/24 16:55:24 by mle-duc           #+#    #+#              #
-#    Updated: 2024/03/01 16:03:01 by mle-duc          ###   ########.fr        #
+#    Updated: 2024/03/03 09:30:45 by mle-duc          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,8 +26,12 @@ SRCS =			$(addprefix src/, \
 				event.c \
 				img_pix_put.c \
 				init_data.c \
+				init_data2.c \
 				raycast.c \
+				raycast2.c \
 				textures.c \
+				load_textures.c \
+				calculations.c \
 				cub3d.c) \
 				$(addprefix parsing/, \
 				check_path.c \

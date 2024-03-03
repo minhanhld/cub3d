@@ -6,87 +6,11 @@
 /*   By: mle-duc <mle-duc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 14:15:42 by mle-duc           #+#    #+#             */
-/*   Updated: 2024/03/02 21:26:55 by mle-duc          ###   ########.fr       */
+/*   Updated: 2024/03/03 09:45:33 by mle-duc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-static void	set_north_south(t_data *data, t_parsing *p)
-{
-	data->dirY = 0;
-	data->planeX = 0;
-	if (p->_playerD == 'N')
-	{
-		data->dirX = -1;
-		data->planeY = 0.66;
-	}
-	else
-	{
-		data->dirX = 1;
-		data->planeY = -0.66;
-	}
-}
-
-static void	set_west_east(t_data *data, t_parsing *p)
-{
-	data->dirX = 0;
-	data->planeY = 0;
-	if (p->_playerD == 'W')
-	{
-		data->dirY = -1;
-		data->planeX = -0.66;
-	}
-	else
-	{
-		data->dirY = 1;
-		data->planeX = 0.66;
-	}
-}
-
-static void	set_direction(t_data *data, t_parsing *p)
-{
-	if (p->_playerD == 'N' || p->_playerD == 'S')
-		set_north_south(data, p);
-	else if (p->_playerD == 'W' || p->_playerD == 'E')
-		set_west_east(data, p);
-}
-
-static void	set_floor_colors(t_data *data, t_parsing *p)
-{
-	t_pos	*tmp;
-	int		color;
-
-	tmp = p->pos;
-	while (tmp != NULL)
-	{
-		if (*(tmp->value) == 'F')
-		{
-				color = 65536 * tmp->range[0] + 256 \
-				* tmp->range[1] + tmp->range[2];
-				data->floor_color = color;
-		}
-		tmp = tmp->next;
-	}
-}
-
-static void	set_ceiling_colors(t_data *data, t_parsing *p)
-{
-	t_pos	*tmp;
-	int		color;
-
-	tmp = p->pos;
-	while (tmp != NULL)
-	{
-		if (*(tmp->value) == 'C')
-		{
-				color = 65536 * tmp->range[0] + 256 \
-				* tmp->range[1] + tmp->range[2];
-				data->ceiling_color = color;
-		}
-		tmp = tmp->next;
-	}
-}
 
 void	init_text_img(t_data *data)
 {
@@ -100,14 +24,35 @@ void	init_text_img(t_data *data)
 	}
 }
 
+static void	init_values(t_data *data)
+{
+	data->perp_wall_dist = 0;
+	data->raydir_y = 0;
+	data->raydir_x = 0;
+	data->draw_start = 0;
+	data->draw_end = 0;
+	data->line_height = 0;
+	data->wall_color = 0;
+	data->sidedist_x = 0;
+	data->sidedist_y = 0;
+	data->deltadist_x = 0;
+	data->deltadist_y = 0;
+	data->map_x = 0;
+	data->map_y = 0;
+	data->step_x = 0;
+	data->step_y = 0;
+	data->camera_x;
+	data->move_speed = 0.017 * 5.0;
+	data->rot_sp = 0.017 * 3.0;
+}
+
 static void	set_values(t_data *data, t_parsing *p)
 {
+	init_values(data);
+	data->pos_x = p->_playerY;
+	data->pos_y = p->_playerX;
 	init_text_img(data);
 	load_textures(data, p);
-	data->moveSpeed = 0.017 * 5.0;
-	data->rotSpeed = 0.017 * 3.0;
-	data->posX = p->_playerY;
-	data->posY = p->_playerX;
 	set_direction(data, p);
 	set_floor_colors(data, p);
 	set_ceiling_colors(data, p);

@@ -6,7 +6,7 @@
 /*   By: mle-duc <mle-duc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 13:19:44 by educlos           #+#    #+#             */
-/*   Updated: 2024/03/02 02:27:40 by mle-duc          ###   ########.fr       */
+/*   Updated: 2024/03/03 09:46:20 by mle-duc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ int	main(int ac, char **argv)
 		printf("%sError in parsing%s\n", RED, RESET);
 		return (-1);
 	}
-	//printf("value : %d\n", ((p->pos)->range)[0]);
 	cub3d(p);
 	free_structs(p);
 }
