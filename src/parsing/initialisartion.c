@@ -32,8 +32,8 @@ char	**init_config(void)
 int	init_map(char *dest, t_parsing *p)
 {
 	size_t	i;
-	int	k;
-	int	index;
+	int		k;
+	int		index;
 
 	i = 0;
 	index = 0;

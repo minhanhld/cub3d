@@ -6,7 +6,7 @@
 /*   By: mle-duc <mle-duc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 09:31:00 by mle-duc           #+#    #+#             */
-/*   Updated: 2024/03/03 09:40:13 by mle-duc          ###   ########.fr       */
+/*   Updated: 2024/03/03 09:58:13 by mle-duc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	set_north_south(t_data *data, t_parsing *p)
 {
 	data->dir_y = 0;
 	data->plane_x = 0;
-	if (p->_playerD == 'N')
+	if (p->_player_d == 'N')
 	{
 		data->dir_x = -1;
 		data->plane_y = 0.66;
@@ -32,7 +32,7 @@ void	set_west_east(t_data *data, t_parsing *p)
 {
 	data->dir_x = 0;
 	data->plane_y = 0;
-	if (p->_playerD == 'W')
+	if (p->_player_d == 'W')
 	{
 		data->dir_y = -1;
 		data->plane_x = -0.66;
@@ -46,9 +46,9 @@ void	set_west_east(t_data *data, t_parsing *p)
 
 void	set_direction(t_data *data, t_parsing *p)
 {
-	if (p->_playerD == 'N' || p->_playerD == 'S')
+	if (p->_player_d == 'N' || p->_player_d == 'S')
 		set_north_south(data, p);
-	else if (p->_playerD == 'W' || p->_playerD == 'E')
+	else if (p->_player_d == 'W' || p->_player_d == 'E')
 		set_west_east(data, p);
 }
 

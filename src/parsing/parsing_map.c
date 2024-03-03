@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: educlos <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: mle-duc <mle-duc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 13:22:25 by educlos           #+#    #+#             */
-/*   Updated: 2024/02/12 14:13:13 by educlos          ###   ########.fr       */
+/*   Updated: 2024/03/03 09:49:43 by mle-duc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int	parsing_map(t_parsing *p)
 		return (-1);
 	}
 	printdoubletab(map->_map);
-	struct_parsing(p,map);
+	struct_parsing(p, map);
 	free_map(map);
 	return (1);
 }

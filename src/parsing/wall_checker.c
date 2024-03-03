@@ -100,7 +100,9 @@ int	check_wall(t_map *m)
 		k = 0;
 		while (m->_map[i][k] != '\0')
 		{
-			if (m->_map[i][k] == '0' || m->_map[i][k] == 'N' || m->_map[i][k]  == 'S' || m->_map[i][k]  == 'E' || m->_map[i][k]  == 'W')
+			if (m->_map[i][k] == '0' || m->_map[i][k] == 'N' \
+				|| m->_map[i][k] == 'S' || m->_map[i][k] == 'E' \
+				|| m->_map[i][k] == 'W')
 			{
 				if (check_wall_pos(m, i, k) == -1)
 				{

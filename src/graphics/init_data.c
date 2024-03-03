@@ -6,7 +6,7 @@
 /*   By: mle-duc <mle-duc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 14:15:42 by mle-duc           #+#    #+#             */
-/*   Updated: 2024/03/03 09:45:33 by mle-duc          ###   ########.fr       */
+/*   Updated: 2024/03/03 09:58:08 by mle-duc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ static void	init_values(t_data *data)
 static void	set_values(t_data *data, t_parsing *p)
 {
 	init_values(data);
-	data->pos_x = p->_playerY;
-	data->pos_y = p->_playerX;
+	data->pos_x = p->_player_y;
+	data->pos_y = p->_player_x;
 	init_text_img(data);
 	load_textures(data, p);
 	set_direction(data, p);

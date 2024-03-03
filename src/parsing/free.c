@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: educlos <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: mle-duc <mle-duc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 13:13:50 by educlos           #+#    #+#             */
-/*   Updated: 2024/02/12 13:15:06 by educlos          ###   ########.fr       */
+/*   Updated: 2024/03/03 09:52:48 by mle-duc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,25 +64,22 @@ void	free_list(t_pos **pos)
 	*pos = NULL;
 }
 
-void	free_double_tab(int **tab)
-{
-	int i;
-
-	i = 0;
-	while (tab[i] != 0)
-	{
-		free(tab[i]);
-		i++;
-	}
-	free(tab);
-}
-
 void	free_structs(t_parsing *p)
 {
+	int	i;
+
 	if (p->map != NULL)
 		free_double_array(p->map);
 	if (p->_map != NULL)
-		free_double_tab(p->_map);
+	{
+		i = 0;
+		while (p->_map[i] != 0)
+		{
+			free(p->_map[i]);
+			i++;
+		}
+		free(p->_map);
+	}
 	if (p->pos != NULL)
 		free_list(&p->begin);
 	free(p);

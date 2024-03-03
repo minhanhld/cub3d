@@ -6,7 +6,7 @@
 /*   By: mle-duc <mle-duc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 14:01:40 by educlos           #+#    #+#             */
-/*   Updated: 2024/03/01 11:12:42 by mle-duc          ###   ########.fr       */
+/*   Updated: 2024/03/03 09:58:13 by mle-duc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ typedef struct s_parsing
 {
 	int				lcount;
 	char			**map;
-	int				_playerY;
-	int 			_playerX;
-	char			_playerD;
+	int				_player_y;
+	int				_player_x;
+	char			_player_d;
 	t_pos			*begin;
 	t_pos			*pos;
 	t_malloc		*_malloc;
@@ -77,7 +77,7 @@ int					check_arg_before(char *src, char *find);
 int					check_arg_after(char *str, int last);
 int					check_map(char **map);
 char				*put_map_line(char *dest, int start, int end);
-void struct_parsing(t_parsing *p, t_map *m);
+void				struct_parsing(t_parsing *p, t_map *m);
 
 //check_path
 int					check_path(t_pos *pos);

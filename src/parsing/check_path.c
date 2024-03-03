@@ -2,16 +2,14 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   check_path.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+        
-	+:+     */
-/*   By: educlos <marvin@42.fr>                     +#+  +:+      
-	+#+        */
-/*                                                +#+#+#+#+#+  
-	+#+           */
-/*   Created: 2024/02/12 13:06:48 by educlos           #+#    #+#             */
-/*   Updated: 2024/02/12 13:06:48 by educlos          ###   ########.fr       */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mle-duc <mle-duc@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/03 09:53:39 by mle-duc           #+#    #+#             */
+/*   Updated: 2024/03/03 09:53:39 by mle-duc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "parsing.h"
 
 int	recursive(t_pos *pos, char *str, int i, int compteur)
