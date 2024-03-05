@@ -6,7 +6,7 @@
 /*   By: mle-duc <mle-duc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 09:53:01 by mle-duc           #+#    #+#             */
-/*   Updated: 2024/03/03 09:58:13 by mle-duc          ###   ########.fr       */
+/*   Updated: 2024/03/05 15:08:56 by mle-duc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,8 @@ void	convert_map_int(t_parsing *p, t_map *m)
 			p->_map[y][x] = m->_map[y][x] - 48;
 			if (m->_map[y][x] == 32)
 				p->_map[y][x] = 0;
-			printf("%d", p->_map[y][x]);
 			x++;
 		}
-		printf("\n");
 		y++;
 	}
 	p->_map[y] = 0;

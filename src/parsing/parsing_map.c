@@ -6,7 +6,7 @@
 /*   By: mle-duc <mle-duc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 13:22:25 by educlos           #+#    #+#             */
-/*   Updated: 2024/03/03 09:49:43 by mle-duc          ###   ########.fr       */
+/*   Updated: 2024/03/05 15:09:39 by mle-duc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ int	parsing_map(t_parsing *p)
 		free_map(map);
 		return (-1);
 	}
-	printdoubletab(map->_map);
 	struct_parsing(p, map);
 	free_map(map);
 	return (1);
