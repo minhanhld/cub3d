@@ -28,7 +28,7 @@ static void	strafe_left_right(int keysym, t_data *data)
 		if (data->map[(int)(data->pos_x + data->plane_x \
 		* data->move_speed)][(int)(data->pos_y)] == 0)
 			data->pos_x += data->plane_x * data->move_speed;
-		if (data->map[(int)data->pos_x][(int)(data->pos_y +data->plane_y \
+		if (data->map[(int)data->pos_x][(int)(data->pos_y + data->plane_y \
 		* data->move_speed)] == 0)
 			data->pos_y += data->plane_y * data->move_speed;
 	}
