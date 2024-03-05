@@ -27,7 +27,6 @@ char	*get_pos(char *map, char *config)
 	tmp = get_nmalloc(map, i, k);
 	if (!tmp)
 		return (NULL);
-	printf("%s\n", tmp);
 	return (tmp);
 }
 
