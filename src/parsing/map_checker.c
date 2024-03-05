@@ -50,7 +50,7 @@ int	check_char(char **map)
 		}
 		i++;
 	}
-	if (n_counter > 1)
+	if (n_counter > 1 || n_counter == 0)
 		return (-1);
 	return (1);
 }
