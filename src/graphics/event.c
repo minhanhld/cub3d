@@ -6,7 +6,7 @@
 /*   By: mle-duc <mle-duc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 17:29:02 by mle-duc           #+#    #+#             */
-/*   Updated: 2024/03/03 09:45:33 by mle-duc          ###   ########.fr       */
+/*   Updated: 2024/03/05 09:38:57 by mle-duc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ static void	strafe_left_right(int keysym, t_data *data)
 {
 	if (keysym == XK_a)
 	{
-		if (data->map[(int)(data->pos_x + data->plane_x \
+		if (data->map[(int)(data->pos_x - data->plane_x \
 		* data->move_speed)][(int)(data->pos_y)] == 0)
 			data->pos_x -= data->plane_x * data->move_speed;
-		if (data->map[(int)data->pos_x][(int)(data->pos_y + data->plane_y \
+		if (data->map[(int)data->pos_x][(int)(data->pos_y - data->plane_y \
 		* data->move_speed)] == 0)
 			data->pos_y -= data->plane_y * data->move_speed;
 	}
@@ -28,7 +28,7 @@ static void	strafe_left_right(int keysym, t_data *data)
 		if (data->map[(int)(data->pos_x + data->plane_x \
 		* data->move_speed)][(int)(data->pos_y)] == 0)
 			data->pos_x += data->plane_x * data->move_speed;
-		if (data->map[(int)data->pos_x][(int)(data->pos_y + data->plane_y \
+		if (data->map[(int)data->pos_x][(int)(data->pos_y +data->plane_y \
 		* data->move_speed)] == 0)
 			data->pos_y += data->plane_y * data->move_speed;
 	}
@@ -47,10 +47,10 @@ static void	move_fw_bw(int keysym, t_data *data)
 	}
 	else if (keysym == XK_s)
 	{
-		if (data->map[(int)(data->pos_x + data->dir_x \
+		if (data->map[(int)(data->pos_x - data->dir_x \
 		* data->move_speed)][(int)(data->pos_y)] == 0)
 			data->pos_x -= data->dir_x * data->move_speed;
-		if (data->map[(int)data->pos_x][(int)(data->pos_y + data->dir_y \
+		if (data->map[(int)data->pos_x][(int)(data->pos_y - data->dir_y \
 		* data->move_speed)] == 0)
 			data->pos_y -= data->dir_y * data->move_speed;
 	}
