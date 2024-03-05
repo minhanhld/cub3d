@@ -12,6 +12,7 @@
 
 #include "parsing.h"
 
+
 char	*get_pos(char *map, char *config)
 {
 	int		i;
@@ -21,13 +22,12 @@ char	*get_pos(char *map, char *config)
 	i = ft_strstr(map, config) + ft_strlen(config);
 	i = skip_space(map, i);
 	k = i;
-	while (map[k] != 32 && map[k] != '\0')
+	while (map[k] != '\0')
 		k++;
-	if (check_only_space(map, k) == -1)
-		return (NULL);
 	tmp = get_nmalloc(map, i, k);
 	if (!tmp)
 		return (NULL);
+	printf("%s\n", tmp);
 	return (tmp);
 }
 

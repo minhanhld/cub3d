@@ -12,32 +12,37 @@
 
 #include "parsing.h"
 
-int	recursive(t_pos *pos, char *str, int i, int compteur)
+int	recursive(t_pos *pos, char *str)
 {
-	int	result;
-	int	mult;
+	int i;
+	int result;
+	int c;
 
-	result = 0;
-	mult = 10;
-	if (compteur > 2)
-		return (-1);
-	while (str[i] != '\0' && str[i] != ',')
+	i = 0;
+	c = 0;
+	while(str[i] != '\0')
 	{
-		if (str[i] < '0' || str[i] > '9')
-			return (-1);
-		else
+		i = skip_space(str,i);
+		result = 0;
+		while (str[i] != ',' && str[i] != '\0')
 		{
-			result = result * mult;
-			result = result + str[i] - '0';
+			if (c == 3)
+				return (-1);
+			if (str[i] < '0' || str[i] > '9')
+			{
+				return (-1);
+			}
+			result = result * 10 + (str[i] - 48);
 			i++;
 		}
+		if (result > 255 || result < 0)
+		{	
+			return (-1);
+		}	
+		pos->range[c] = result;
+		c++;
+		i++;
 	}
-	if (result > 255 || result < 0)
-		return (-1);
-	pos->range[compteur] = result;
-	if (str[i] == '\0')
-		return (1);
-	recursive(pos, str, ++i, ++compteur);
 	return (1);
 }
 
@@ -46,7 +51,7 @@ int	check_range(t_pos *pos, char *str)
 	pos->range = malloc(sizeof(int) * 3);
 	if (!pos->range)
 		return (-1);
-	if (recursive(pos, str, 0, 0) == -1)
+	if (recursive(pos, str) == -1)
 		return (-1);
 	return (0);
 }
