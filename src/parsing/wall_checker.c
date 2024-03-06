@@ -6,7 +6,7 @@
 /*   By: educlos <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 13:59:53 by educlos           #+#    #+#             */
-/*   Updated: 2024/02/12 14:15:21 by educlos          ###   ########.fr       */
+/*   Updated: 2024/03/06 19:01:32 by mle-duc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,7 @@ int	check_wall_posx(t_map *m, int y, int x)
 			break ;
 		}
 	}
-	while (_x-- != 0)
-	{
-		if (m->_map[y][_x] == 32)
-			return (-1);
-		if (m->_map[y][_x] == '1')
-		{
-			result++;
-			break ;
-		}
-	}
+	check_wall_posx2(m, y, _x, &result);
 	if (result == 2)
 		return (1);
 	return (-1);
@@ -91,7 +82,9 @@ int	check_wall_posy(t_map *m, int y, int x)
 int	check_wall_pos(t_map *m, int y, int x)
 {
 	if (check_wall_posx(m, y, x) == -1)
+	{
 		return (-1);
+	}
 	if (check_wall_posy(m, y, x) == -1)
 		return (-1);
 	return (1);

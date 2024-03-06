@@ -6,7 +6,7 @@
 /*   By: mle-duc <mle-duc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 13:19:44 by educlos           #+#    #+#             */
-/*   Updated: 2024/03/06 17:57:53 by mle-duc          ###   ########.fr       */
+/*   Updated: 2024/03/06 19:02:33 by mle-duc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,27 +54,32 @@ int	parsing(t_parsing *p, int fd)
 	if (get_config(p, dest) == -1)
 		return (-1);
 	if (parsing_map(p) == -1)
-		return (-1);
+		return (-2);
 	return (1);
 }
 
 int	error_handling(t_parsing *p, char **argv, int fd)
 {
+	int	error;
+
 	if (fd == -1 || ft_check_format(argv[1], ".cub") == -1)
 	{
 		free_structs(p);
-		printf("%sError file%s\n", RED, RESET);
+		printf("%sError\nFile:%s Wrong%s\n", RED, argv[1], RESET);
 		return (-1);
 	}
-	if (parsing(p, fd) == -1)
+	error = parsing(p, fd);
+	if (error != 1)
 	{
+		if (error == -2)
+			printf("%sError\nMapFormatWrong%s\n", RED, RESET);
+		else
+			printf("%sError\nMapConfigWrong%s\n", RED, RESET);
 		free_structs(p);
-		printf("%sError in parsing%s\n", RED, RESET);
 		return (-1);
 	}
 	return (0);
 }
-
 
 int	main(int ac, char **argv)
 {

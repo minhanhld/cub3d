@@ -49,3 +49,18 @@ int	only_wall(char *str)
 	}
 	return (1);
 }
+
+int	check_wall_posx2(t_map *m, int y, int _x, int *result)
+{
+	while (_x-- != 0)
+	{
+		if (m->_map[y][_x] == 32)
+			return (-1);
+		if (m->_map[y][_x] == '1')
+		{
+			(*result)++;
+			break ;
+		}
+	}
+	return ((*result));
+}

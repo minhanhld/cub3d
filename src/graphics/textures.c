@@ -26,6 +26,8 @@ void	handle_wrong_path(t_data *data, t_parsing *p)
 	int	i;
 
 	i = -1;
+	printf("%sError\nInvalid textures (wrong path, \
+wrong name, wrong extension ...)\n%s", RED, RESET);
 	while (++i < 4)
 	{
 		if (data->textures[i].mlx_img != NULL)

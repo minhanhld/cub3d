@@ -98,6 +98,7 @@ int					check_wall_posx(t_map *m, int y, int x);
 int					check_wall_posy(t_map *m, int y, int x);
 int					check_wall_pos(t_map *m, int y, int x);
 int					check_wall(t_map *m);
+int					check_wall_posx2(t_map *m, int y, int _x, int *result);
 
 //utils_line
 int					ft_endlinelen(char *dest, int index);
