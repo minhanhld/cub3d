@@ -12,31 +12,44 @@
 
 #include "parsing.h"
 
+int	check_nb_between_comma(char *str, int i)
+{
+	if (!str)
+		return (-1);
+	while (str[i] != ',' && str[i] != '\0')
+	{
+		if (str[i] >= '0' && str[i] <= '9')
+			return (1);
+		i++;
+	}
+	return (-1);
+}
+
 int	recursive(t_pos *pos, char *str, int c)
 {
-	int i;
-	int result;
+	int	i;
+	int	result;
 
 	i = 0;
-	while(str[i] != '\0')
+	while (str[i] != '\0')
 	{
-		i = skip_space(str,i);
+		i = skip_space(str, i);
 		result = 0;
-		while (str[i] != ',' && str[i] != '\0')
-		{
-			if (c == 3)
-				return (-1);
-			if (str[i] < '0' || str[i] > '9')
-				return (-1);
-			result = result * 10 + (str[i] - 48);
-			i++;
-		}
+		if (str[i] < '0' || str[i] > '9')
+			return (-1);
+		while (str[i] >= '0' && str[i] <= '9' && str[i] != '\0')
+			result = result * 10 + (str[i++] - 48);
 		if (result > 255 || result < 0)
 			return (-1);
 		pos->range[c++] = result;
+		i = skip_space(str, i);
+		if (str[i] != ',' && str[i] != '\0')
+			return (-1);
 		if (str[i] != '\0')
 			i++;
 	}
+	if (c != 3)
+		return (-1);
 	return (1);
 }
 

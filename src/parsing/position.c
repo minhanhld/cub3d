@@ -12,7 +12,6 @@
 
 #include "parsing.h"
 
-
 char	*get_pos(char *map, char *config)
 {
 	int		i;
