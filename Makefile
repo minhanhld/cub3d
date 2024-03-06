@@ -64,15 +64,18 @@ all: ${NAME}
 
 ${NAME}: ${OBJS}
 	make -C libft
+	make -C mlx_linux
 	$(CC) $(OBJS) ${CFLAGS} -L${LIBFT_DIR} -lft -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
 
 clean:
 	${RM} ${OBJS}
 	make clean -C libft
+	make clean -C mlx_linux
 
 fclean: clean
 	${RM} ${NAME}
 	make fclean -C libft
+	make clean -C mlx_linux
 
 re: fclean all
 
