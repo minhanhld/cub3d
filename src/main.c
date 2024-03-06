@@ -6,7 +6,7 @@
 /*   By: mle-duc <mle-duc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 13:19:44 by educlos           #+#    #+#             */
-/*   Updated: 2024/03/03 09:46:20 by mle-duc          ###   ########.fr       */
+/*   Updated: 2024/03/06 17:57:53 by mle-duc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,18 +58,8 @@ int	parsing(t_parsing *p, int fd)
 	return (1);
 }
 
-int	main(int ac, char **argv)
+int	error_handling(t_parsing *p, char **argv, int fd)
 {
-	int			fd;
-	t_parsing	*p;
-
-	p = malloc(sizeof(t_parsing));
-	if (!p)
-		return (-1);
-	init_pstruct(p);
-	if (ac != 2)
-		return (-1);
-	fd = open(argv[1], O_RDONLY);
 	if (fd == -1 || ft_check_format(argv[1], ".cub") == -1)
 	{
 		free_structs(p);
@@ -82,6 +72,27 @@ int	main(int ac, char **argv)
 		printf("%sError in parsing%s\n", RED, RESET);
 		return (-1);
 	}
+	return (0);
+}
+
+
+int	main(int ac, char **argv)
+{
+	int			fd;
+	t_parsing	*p;
+
+	if (ac != 2)
+	{
+		printf("usage: ./cub3D map.cub\n");
+		return (-1);
+	}
+	p = malloc(sizeof(t_parsing));
+	if (!p)
+		return (-1);
+	init_pstruct(p);
+	fd = open(argv[1], O_RDONLY);
+	if (error_handling(p, argv, fd) == -1)
+		return (-1);
 	cub3d(p);
 	free_structs(p);
 }

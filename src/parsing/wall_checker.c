@@ -105,10 +105,7 @@ int	check_wall(t_map *m)
 				|| m->_map[i][k] == 'W')
 			{
 				if (check_wall_pos(m, i, k) == -1)
-				{
-					printf("%d\n", i);
 					return (-1);
-				}
 			}
 			k++;
 		}

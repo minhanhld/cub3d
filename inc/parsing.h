@@ -86,8 +86,6 @@ int					check_path(t_pos *pos);
 int					parsing_map(t_parsing *p);
 
 //free_global
-int					push_malloc(t_parsing *p, char *str);
-int					push_malloc_double(t_parsing *p, char **str);
 void				free_double_array(char **str);
 void				free_double_array_dest(char **str, int index_max);
 
@@ -131,5 +129,5 @@ void				printtab(char *str);
 //utils_list
 int					get_list(t_pos **pos, t_parsing *p, char *arg, char *value);
 int					push_front_list(t_pos **pos, t_pos *new, t_parsing *p);
-void				print_list(t_pos *pos);
+
 #endif

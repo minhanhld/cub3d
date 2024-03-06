@@ -12,55 +12,6 @@
 
 #include "parsing.h"
 
-int	push_malloc(t_parsing *p, char *str)
-{
-	t_malloc	*new;
-
-	new = malloc(sizeof(t_malloc));
-	if (!new)
-		return (-1);
-	new->pointer = str;
-	new->pointer2 = NULL;
-	new->next = NULL;
-	new->back = NULL;
-	if (p->_malloc == NULL)
-	{
-		p->_malloc = new;
-		p->_mbegin = new;
-	}
-	else
-	{
-		p->_malloc->next = new;
-		new->back = p->_malloc;
-	}
-	return (1);
-}
-
-int	push_malloc_double(t_parsing *p, char **str)
-{
-	t_malloc	*new;
-
-	new = malloc(sizeof(t_malloc));
-	if (!new)
-		return (-1);
-	new->pointer = NULL;
-	new->pointer2 = str;
-	new->next = NULL;
-	new->back = NULL;
-	printf("malloc : %p\n && %p", new->pointer2, str);
-	if (p->_malloc == NULL)
-	{
-		p->_malloc = new;
-		p->_mbegin = new;
-	}
-	else
-	{
-		p->_malloc->next = new;
-		new->back = p->_malloc;
-	}
-	return (1);
-}
-
 int	check_only_space(char *str, int index)
 {
 	while (str[index] != '\0')

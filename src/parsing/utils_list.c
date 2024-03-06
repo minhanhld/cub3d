@@ -12,29 +12,6 @@
 
 #include "parsing.h"
 
-void	print_list(t_pos *pos)
-{
-	int		i;
-	t_pos	*current;
-
-	i = 0;
-	current = pos;
-	while (current != NULL)
-	{
-		printf("liste chaine arg: %s value : %s\n", current->arg,
-			current->value);
-		if (current->range != NULL)
-		{
-			while (i < 2)
-			{
-				printf("tab[%d] = %d \n", i, pos->range[i]);
-				i++;
-			}
-		}
-		current = current->next;
-	}
-}
-
 static t_pos	*get_info_list(char *arg, char *value)
 {
 	t_pos	*new;
