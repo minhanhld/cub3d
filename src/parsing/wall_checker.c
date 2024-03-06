@@ -21,6 +21,8 @@ int	check_wall_posx(t_map *m, int y, int x)
 	result = 0;
 	while (m->_map[y][x++] != '\0')
 	{
+		if (m->_map[y][x] == 32)
+			return (-1);
 		if (m->_map[y][x] == '1')
 		{
 			result++;
@@ -29,6 +31,8 @@ int	check_wall_posx(t_map *m, int y, int x)
 	}
 	while (_x-- != 0)
 	{
+		if (m->_map[y][_x] == 32)
+			return (-1);
 		if (m->_map[y][_x] == '1')
 		{
 			result++;
@@ -45,6 +49,8 @@ int	check_wall_posy2(t_map *m, int _y, int x, int *result)
 	while (_y != -1)
 	{
 		if (x >= (int)ft_strlen(m->_map[_y]))
+			return (-1);
+		if (m->_map[_y][x] == 32)
 			return (-1);
 		if (m->_map[_y][x] == '1')
 		{
@@ -66,6 +72,8 @@ int	check_wall_posy(t_map *m, int y, int x)
 	while (m->_map[y] != 0)
 	{
 		if (x >= (int)ft_strlen(m->_map[y]))
+			return (-1);
+		if (m->_map[y][x] == 32)
 			return (-1);
 		if (m->_map[y][x] == '1')
 		{
