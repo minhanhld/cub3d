@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mle-duc <marvin@42.fr>                     +#+  +:+       +#+         #
+#    By: mle-duc <mle-duc@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/09 16:27:42 by mle-duc           #+#    #+#              #
-#    Updated: 2023/06/26 19:07:04 by mle-duc          ###   ########.fr        #
+#    Updated: 2024/03/07 11:30:36 by mle-duc          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC =		cc
 
 RM =		rm -f
 
-CFLAGS =	-g3 -Werror -Wextra -Wall
+CFLAGS =	-Werror -Wextra -Wall
 
 SRCS =			ft_isalpha.c \
 				ft_isdigit.c \
