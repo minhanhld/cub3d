@@ -1,10 +1,10 @@
-NO ./src/textures/minecraft.xpm
+NO textures/minecraft.xpm
 
-SO ./src/textures/barrel.xpm
+SO textures/barrel.xpm
 
-WE ./src/textures/bluestone.xpm
+WE textures/bluestone.xpm
 
-EA ./src/textures/eagle.xpm
+EA textures/eagle.xpm
 
 F 220,10,0
 C 202,000000000021,0212
