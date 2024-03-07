@@ -6,7 +6,7 @@
 /*   By: mle-duc <mle-duc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 17:12:25 by mle-duc           #+#    #+#             */
-/*   Updated: 2024/03/03 09:45:33 by mle-duc          ###   ########.fr       */
+/*   Updated: 2024/03/07 16:45:46 by mle-duc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,13 @@ typedef struct s_data
 	int			step_x;
 	int			step_y;
 
+	int			left_key;
+	int			right_key;
+	int			a_key;
+	int			d_key;
+	int			w_key;
+	int			s_key;
+
 	int			wall_color;
 	int			floor_color;
 	int			ceiling_color;
@@ -94,10 +101,12 @@ typedef struct s_point
 }	t_point;
 
 //minilibx
-int			handle_input(int keysym, t_data *data);
+int			handle_keypress(int keysym, t_data *data);
+int			handle_keyrelease(int keysym, t_data *data);
 int			cross(t_data *data);
 int			render(t_data *d);
 void		img_pix_put(t_img *img, int x, int y, int color);
+void		move_player(t_data *data);
 
 //drawing
 void		raycast(t_data *data);

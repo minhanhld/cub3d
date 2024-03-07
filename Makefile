@@ -6,7 +6,7 @@
 #    By: mle-duc <mle-duc@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/24 16:55:24 by mle-duc           #+#    #+#              #
-#    Updated: 2024/03/07 11:30:12 by mle-duc          ###   ########.fr        #
+#    Updated: 2024/03/07 16:13:54 by mle-duc          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ SRCS =			$(addprefix src/, \
 				textures.c \
 				load_textures.c \
 				calculations.c \
+				moveplayer.c \
 				cub3d.c) \
 				$(addprefix parsing/, \
 				check_path.c \

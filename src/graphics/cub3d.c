@@ -6,7 +6,7 @@
 /*   By: mle-duc <mle-duc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 16:51:54 by mle-duc           #+#    #+#             */
-/*   Updated: 2024/03/02 14:47:06 by mle-duc          ###   ########.fr       */
+/*   Updated: 2024/03/07 16:44:12 by mle-duc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,9 @@ void	destroy_textures(t_data *data)
 void	hooks(t_data *data)
 {
 	mlx_loop_hook(data->mlx_ptr, &render, data);
-	mlx_hook(data->win_ptr, KeyPress, KeyPressMask, &handle_input, data);
+	mlx_hook(data->win_ptr, KeyPress, KeyPressMask, &handle_keypress, data);
+	mlx_hook(data->win_ptr, KeyRelease, \
+	KeyReleaseMask, &handle_keyrelease, data);
 	mlx_hook(data->win_ptr, 17, 1L << 0, &cross, data);
 	mlx_loop(data->mlx_ptr);
 }
