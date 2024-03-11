@@ -1,10 +1,10 @@
-NO textures/paysages.xpm
+NO textures/wood.xpm
 
-SO textures/peinture.xpm
+SO textures/wood.xpm
 
-WE textures/paysages.xpm
+WE textures/wood.xpm
 
-EA textures/peinture.xpm
+EA textures/wood.xpm
 
 F 220,10,0
 C 202,000000000021,0212
