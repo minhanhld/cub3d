@@ -6,7 +6,7 @@
 /*   By: mle-duc <mle-duc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 14:01:40 by educlos           #+#    #+#             */
-/*   Updated: 2024/03/03 09:58:13 by mle-duc          ###   ########.fr       */
+/*   Updated: 2024/03/11 15:01:02 by mle-duc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,6 @@ int					main(int ac, char **argv);
 
 //parsing
 int					get_config(t_parsing *p, char *dest);
-int					check_arg_before(char *src, char *find);
-int					check_arg_after(char *str, int last);
 int					check_map(char **map);
 char				*put_map_line(char *dest, int start, int end);
 void				struct_parsing(t_parsing *p, t_map *m);
@@ -122,10 +120,6 @@ int					ft_strstr(char *str, char *to_find);
 char				*get_nmalloc(char *str, int start, int end);
 int					skip_string(char *str);
 int					ft_check_format(char *src, char *format);
-
-//utils_print
-void				printdoubletab(char **str);
-void				printtab(char *str);
 
 //utils_list
 int					get_list(t_pos **pos, t_parsing *p, char *arg, char *value);

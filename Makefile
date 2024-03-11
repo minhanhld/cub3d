@@ -6,7 +6,7 @@
 #    By: mle-duc <mle-duc@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/24 16:55:24 by mle-duc           #+#    #+#              #
-#    Updated: 2024/03/07 16:13:54 by mle-duc          ###   ########.fr        #
+#    Updated: 2024/03/11 14:59:42 by mle-duc          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,6 @@ SRCS =			$(addprefix src/, \
 				position.c \
 				utils_line.c \
 				utils_list.c \
-				utils_print.c \
 				utils.c \
 				utils2.c \
 				utils3.c \
