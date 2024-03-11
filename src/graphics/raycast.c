@@ -6,7 +6,7 @@
 /*   By: mle-duc <mle-duc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 16:07:59 by mle-duc           #+#    #+#             */
-/*   Updated: 2024/03/07 18:42:01 by mle-duc          ###   ########.fr       */
+/*   Updated: 2024/03/11 15:40:15 by mle-duc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	north_texture(t_data *data, int j, int x)
 	step = 1.0 * data->textures[0].tex_height / data->line_height;
 	tex_pos = (data->draw_start - WINDOW_HEIGHT / 2 \
 	+ data->line_height / 2) * step;
-	while (j < data->draw_end)	
+	while (j < data->draw_end)
 	{
 		tex_y = (int)tex_pos;
 		tex_pos += step;

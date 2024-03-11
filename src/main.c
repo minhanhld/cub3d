@@ -6,7 +6,7 @@
 /*   By: mle-duc <mle-duc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 13:19:44 by educlos           #+#    #+#             */
-/*   Updated: 2024/03/11 14:56:25 by mle-duc          ###   ########.fr       */
+/*   Updated: 2024/03/11 15:39:39 by mle-duc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,8 @@ int	error_handling(t_parsing *p, char **argv, int fd)
 		if (error == -2)
 			printf("%sError\nInvalid map format%s\n", RED, RESET);
 		else
-			printf("%sError\nInvalid settings(textures, ceiling, floor...) (%s\n", RED, RESET);
+			printf("%sError\nInvalid settings(textures, ceiling, \
+floor, player position missing...)%s\n", RED, RESET);
 		free_structs(p);
 		return (-1);
 	}
